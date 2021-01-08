@@ -1,0 +1,7 @@
+configure your app as a separate js object because it makes the code more modular.......
+
+use __dirname for writing directory paths
+
+use varibles with app.get method
+set of module.exports direclty if you have only oe export
+

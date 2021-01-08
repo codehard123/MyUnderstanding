@@ -1,3 +1,5 @@
+Threads have thread id , pc, register set and stack.....
+
 **\*\***\*\***\*\***Explanation**\*\*\*\***\***\*\*\*\***
 Suppose we want to fetch a glass of water. But we are busy and we can't afford losing time. So we have two options :- (
 We can either make our clone that can fetch water for us(Process)
@@ -26,5 +28,13 @@ T:- New thread created is not a clone but opearate on same code and data. Only t
 P:- The new process created using fork system call causes the new process to have the parent Process id of the previous process but different pid
 T:- The new thread belongs to the same process
 
-P:- Each process has its own cal
-T:-
+P:- Context switching is slow
+T:-Context switching is fast
+
+P :- Independent(process creation)
+T:- Dependent (process creation)
+
+P:- Blocking a process does not result in blocking the parent process
+T:- Blocking a thread results in blocking the process.
+
+PS:- Total number of processes that can be created by using fork() system call are (pow(2,n) - 1)

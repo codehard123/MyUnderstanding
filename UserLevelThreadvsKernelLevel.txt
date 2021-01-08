@@ -1,0 +1,21 @@
+Threads categorised as :- User level and Kernel level.
+
+(U)ser level Threads---- typically fast
+(K)ernel level threads-----slower
+
+U- managed by user level library ... meaning application is responsible for making the user level threads
+K- Managed by operating system through system calls
+
+(U)- procedural call
+(K)- system call(causes more time)
+
+U- context swithing is fast
+K- context swithing is slow
+
+Context switching time :- Process>Kernel>User
+
+If one user level thread performs blocking operation then entire into
+
+******\*\*******HYBRID******\*\*******
+
+****\*\*\*****HybridEnds****\*\*\*\*****

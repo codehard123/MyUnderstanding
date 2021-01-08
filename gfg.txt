@@ -1,0 +1,924 @@
+we shall discuss compiler design now the
+
+main aim of compiler is to convert a
+
+high-level language into a low-level
+
+language then the question is if you
+
+have to convert the high-level language
+
+into low-level language why don't we
+
+write a program in a low-level language
+
+the reason is we are not comfortable
+
+writing programs in zeros and ones the
+
+binary language we are comfortable
+
+writing it in English English language
+
+or some language similar to English and
+
+then compare with the software which is
+
+going to convert that high-level
+
+language to low-level language along
+
+with the compiler we have many other
+
+software modules which will help us here
+
+so if you look at this this diagram I'll
+
+tell you what are all the phases
+
+available see first the high-level
+
+language will be given to preprocessor
+
+then the preprocessor is going to
+
+convert that high-level language into
+
+pure high-level language for example
+
+what is a high-level language and pure
+
+high-level languages if you write a C
+
+program these starting lines are going
+
+to contain hash include' isn't it or it
+
+is going to contain hash define right so
+
+if a program contains such lines then it
+
+is called high level language and
+
+preprocessor is going to remove these
+
+lines remove these lines removing hash
+
+include' by including the file that is
+
+also called as fine inclusion file
+
+inclusion finding division means
+
+whatever file you want to include the
+
+preprocessor is going to substitute that
+
+entire file in your source program ok
+
+and the second one is hash different for
+
+example with sometimes you might have to
+
+define a constant and you don't want to
+
+write its name let me tell you an
+
+example in some programs we might need
+
+the value interest interest know
+
+provided by the bank and the interest is
+
+variable right it is a constant but then
+
+it is a variable therefore if anywhere
+
+the interest has to be changed you
+
+cannot go to the program and then you
+
+know how to mechanically manually change
+
+all the places where the interest is
+
+instead of doing that you can just
+
+change in the define line has defined
+
+something okay
+
+so if you have has different hash
+
+includes you know you can have has diff
+
+and some constant if we change the value
+
+of has different constraint it is
+
+automatically going to be reflected so
+
+it is called macro expansion sometimes
+
+we are going to write macros also micros
+
+are nothing but small functions for
+
+which we need don't want to really call
+
+a function function calling is the
+
+overhead macro calling is simple that is
+
+where we go for macro expansion so
+
+preprocessor is generally going to do
+
+these things
+
+file X file inclusion and macro
+
+expansion now after the preprocessor
+
+fails we are going to enter the compiler
+
+fails and input to compare is pure
+
+high-level language which means the
+
+program will not contain any hash lines
+
+any hash tags and these hash tags are
+
+also called as preprocessor directives
+
+they direct the preprocessor about what
+
+to do ok so the next phase is assembly
+
+sorry compiler compiler will take the
+
+pure high-level language and it will
+
+convert into assembly language for every
+
+platform by platform I mean the hardware
+
+that you are using for example Intel or
+
+AMD or Motorola this is the hardware you
+
+are using on top of it the operating
+
+system for example Linux windows 64-bit
+
+32-bit so depending on your hardware and
+
+the operating systems which is also
+
+called as platform we are going to have
+
+some assemblers a assembler for one
+
+platform will not work for other
+
+platform for example you can think of
+
+assembler as as a manual a manual which
+
+is you know which using which you can
+
+only operate one instrument you cannot
+
+operate other instrument therefore the
+
+main purpose of compiler is to generate
+
+assembly language language and assembly
+
+level language will be not a not
+
+entirely in zeros and ones and not
+
+entirely high-level language so it is
+
+somewhat intermediate previously long
+
+back people used to write the programs
+
+in assembly language too and later they
+
+came to high level language okay you
+
+know before compiler they always used to
+
+have assembler and once the assembler
+
+take this assembly language it is going
+
+to contain convert the assembly language
+
+into machine code so machine code is
+
+that you know what it is zeros and ones
+
+but then there are two types of machine
+
+course one is relocatable machine code
+
+and other is
+
+absolute machine code relocatable
+
+machine code means you can load that
+
+machine code at any point in the
+
+computer and you can run in the sense in
+
+the sense compiler resins that it
+
+doesn't assume anything compiler doesn't
+
+assume that you are going to run a in a
+
+run a program only from particular
+
+memory if you have the memory ram in the
+
+tram in that Ram compile regimes that
+
+you can either start from this point or
+
+this point or this point therefore all
+
+the addresses within the program will be
+
+in such a way that they will cooperate
+
+for the program movement while running
+
+the program you can move it ok and
+
+louder and drink linker will take the
+
+machine code which is relocatable and
+
+then convert it into absolute code ok so
+
+let's let's see what No
+
+if you if you if we talk about any
+
+comparing like GCC or turbo turbo C C
+
+compiler all these phases are included
+
+ok so but then actually compiler means
+
+only the part which converts pure
+
+high-level language to assembly language
+
+but if you look at GCC you need not do
+
+pre-processing separately assembly
+
+separately loading linking separately
+
+everything will become no kept in a one
+
+tool now in this course compiler design
+
+we are not interested in looking at all
+
+the tools together we are only going to
+
+look at what a compiler is going to do
+
+so let's see what are all the fields
+
+available in compiler so first one is
+
+lexical analysis phase lexical analysis
+
+phase will take the program and read it
+
+and then convert the program into tokens
+
+that is also called a stream of tokens
+
+and next this stream of tokens will be
+
+given to syntax analyzer syntax analyzer
+
+is also called as parts or sometimes and
+
+syntax analyzer is going to take the
+
+tokens and convert it into a parse tree
+
+and now pass tree will be given to
+
+semantic analysis and non semantic
+
+analyzer is going to again verify
+
+whether the pass tree is meaningful or
+
+not that is called parse tree which is
+
+semantically verified and now this path
+
+tree will be given to intermediate code
+
+generator intermediate code generator is
+
+going to generate three address code
+
+there are various
+
+three address quotes we have and here I
+
+know there are various intermediate
+
+codes we have and three address code is
+
+very very popular and now the output of
+
+this intermediate code generator will be
+
+given to code optimizer the main purpose
+
+of code optimizer is to reduce the size
+
+of the program or is to reduce the
+
+number of lines and then it will be
+
+given to target code generator and
+
+target code generator is finally going
+
+to generate the assembly code and during
+
+all the phases all of the phases or the
+
+entire software modules are going to
+
+take support from something called as
+
+symbol table manager so we shall see all
+
+of them in detail by taking an example
+
+you will understand more when I take an
+
+example and moreover all of them are
+
+going to talk with a module called error
+
+handler okay so we shall take an example
+
+and see what do I mean by stream of
+
+tokens and what do I mean by pass three
+
+what do I mean by semantic verification
+
+three a task or optimization target for
+
+generator
+
+I'll take a single example and I will
+
+explain you all the phases in that
+
+example okay yeah let's see an example
+
+about how all the phases are working the
+
+example is X equal to a plus B into C
+
+let us say that is the source program we
+
+have given just for the assumption the
+
+source program is just one line X equal
+
+to a plus B into C nothing but you know
+
+I have to multiply B and C and then ID a
+
+and store the result in X first this one
+
+will be given to lexical analyzer once
+
+the lexical analyzer receives input the
+
+input is converted into a stream of
+
+tokens that is the main purpose of
+
+lexical analyzer right so other
+
+responsibilities of lexical analyzer is
+
+they are going to remove the white
+
+spaces if there are any white spaces
+
+opposite you know I after this before it
+
+and if there are any comments if you
+
+know you might you might even write it
+
+you know a comment something like this
+
+whatever command it is this one will be
+
+deleted right
+
+next
+
+so main responsibility is converting the
+
+program the stream of lick seems lexemes
+
+means all these names into stream of
+
+tokens right
+
+for example IDs I know X is identifier
+
+equal to is a operator a is an
+
+identifier less is an operator B is an
+
+identifier C is an identifier right so
+
+how do you identify how does the lexical
+
+analyzer identify that you know these
+
+are all identifiers and then these are
+
+all token seals that is using some
+
+regular expression called patterns so
+
+for example an identifier can be like
+
+this an identifier can be a letter
+
+followed by letter or digits any number
+
+of them a letter followed will at all
+
+this is called the pattern if anything
+
+matches this pattern then that will be
+
+automatically identified as an
+
+identifier so the pattern will be known
+
+to the lexical analyzer before which
+
+means you have to give it to you before
+
+you start everything now once you get
+
+the tokens stream of tokens stream of
+
+tokens will be given to syntax analyzer
+
+now syntax analyzer is going to take all
+
+the tokens one by one and then it is
+
+also going to take a grammar no it is
+
+generally called context-free grammar
+
+why are grammars no useful is its main
+
+grammars main uses this what the entire
+
+program the rules of the programming
+
+language can be entirely represented in
+
+some few productions generally every
+
+program is no every programming language
+
+it will have some few hundreds of
+
+productions using these hundreds of
+
+productions production means these rules
+
+using these rules we can represent what
+
+a program actually is for example the
+
+meaning of this these few productions is
+
+this a statement can be identifier is
+
+equal to expression followed by
+
+semicolon ok and now an expression can
+
+be expression plus term or term a term
+
+can be term into factor or factor a
+
+factor can be simply a and I
+
+a fire right so using this process this
+
+rules your program has to be masked
+
+Agnes in there which means the input has
+
+to be checked whether we have given it
+
+according to this format which we wanted
+
+for this for this the syntax analyzer it
+
+is also called as parser it is going to
+
+construct a parse tree pass tree is
+
+going to start with the start symbol yes
+
+yes is the start symbol a statement is
+
+identifier is equal to expression an
+
+expression is expression plus term a
+
+term is term into factor factor can be
+
+identifier term can be factor factor can
+
+be identifier so finally what we get is
+
+a parse tree in which no we can see the
+
+entire stream of tokens in case if you
+
+don't see the stream of tokens see the
+
+stream autogas is this ID equal to ID
+
+plus ID into star followed by semicolon
+
+right therefore you have to see that the
+
+yield of this pass tree and the input to
+
+this email syntax analyzer both are same
+
+if you get that we can say that the
+
+input is according to the format we gave
+
+otherwise there is a syntax error
+
+therefore syntax errors can be detected
+
+at syntax analyzer if the input is not
+
+according to the grammar given okay now
+
+the output of syntax analyzer is a parse
+
+tree this path tree will be given to
+
+semantic analyzer the next phase right
+
+so semantic analyzer is going to take
+
+the path tree and verify it semantically
+
+semantically in the sense whether it is
+
+meaningful or not for example it is no
+
+identifier is equal to something right
+
+now with left hand side has to be a
+
+variable it cannot be a constant or it
+
+cannot be a function name or it cannot
+
+be an array name so left hand side has
+
+to be a variable which is compatible
+
+with the type of the right hand side so
+
+all such type checking or have to be
+
+done at semantic analyzer okay
+
+so output of semantic analyzer is going
+
+to be meaningfully verified parse tree
+
+that is why it is called syntactic
+
+semantically verified path tree now this
+
+semantically verified path tree will be
+
+given to intermediate code generator so
+
+intermediate code
+
+is going to generate intermediate code
+
+the there are various kinds of
+
+intermediate codes but the most popular
+
+one in intermediate code is a three
+
+address four why is it called three
+
+address code is if you look at any line
+
+there are only three addresses for
+
+example in this one
+
+t1 BC t2 81 X t2 which means maximum
+
+there can be three addresses mean you
+
+know it can even be less so the given
+
+statement is four addresses now we
+
+reduce the statement in to three
+
+addresses this is three address code
+
+why do you want to convert something
+
+into intermediate code generator is if
+
+we can convert a program into
+
+intermediate code then that intermediate
+
+code can be converted to machine
+
+language using the last two phases which
+
+are dependent on the platform so till
+
+this part whatever machine you are going
+
+to run the compiler on this part is
+
+completely same which means if you want
+
+to design a new compiler for a new
+
+platform you need not start it from the
+
+scratch you can take all the faces till
+
+intermediate code generator and you can
+
+change a loss to phases so that the new
+
+compiler can be formed okay therefore if
+
+you are having an existing compiler what
+
+you could do is just take it and then
+
+change the last two phases so that you
+
+get it new compiler for a new platform
+
+for example if your existing compiler is
+
+writing some code which will run on a
+
+computer maybe if you want to do a code
+
+or on a write a code which will run on a
+
+mobile phone just you change the last
+
+two phases these two phases you need not
+
+change everything okay and then by
+
+taking this intermediate code the code
+
+optimizer is going to reduce the number
+
+of lines how many lines for there three
+
+lines for there if you look at the lines
+
+first what is what are they doing is
+
+first they are trying to multiply B and
+
+C first they are trying to multiply B
+
+and C and then put it in t1 and then add
+
+EI to t1 and then put it in t2 and then
+
+write T 2 into X now by using code
+
+optimizer we are actually reducing the
+
+number of lines we don't need actually
+
+see
+
+to do this job only two knives could do
+
+it okay so that is where we are having
+
+code optimizer now the output of code
+
+optimizer will be given to target code
+
+generator the main main purpose of
+
+target code generator is to write the
+
+code which assembler can understand you
+
+remember that right after the compiler
+
+there is a phase called assembler and
+
+the assembler will be depending on the
+
+platform therefore depending on what
+
+assembler you use you have to write D
+
+you know this same target code generator
+
+has to produce that kind of port for
+
+example no this is just an example I
+
+have taken it need not be the same for
+
+all the compilers so output could look
+
+something like this something I'm not
+
+saying that it is going to be always
+
+like this no we have how many variables
+
+ABC in case if you have mudiay in toward
+
+my are not being 2 R 1 C 2 R 2 then this
+
+code can be put in this way first we are
+
+multiplying B and C that is very
+
+multiply R 1 and R 2 and they're storing
+
+it in R 2 only therefore R 2 will
+
+contain B into C and then we are adding
+
+our not to or to write why because T 2
+
+is nothing but adding or not toward and
+
+then we are moving everything into X
+
+right this is actually X X equal to a
+
+plus T 1 and then we are moving
+
+everything into X right so theoretically
+
+this is what all the phases are supposed
+
+to do but then practically when you come
+
+to the practical implementation of
+
+compilers we really don't have all these
+
+phases most of the phases or most of the
+
+jobs or the functions are done by syntax
+
+analyzer itself which means the syntax
+
+analyzer is the generally the heart of
+
+the compiler which is even going to take
+
+lexical and I mean when you implement it
+
+we are not going to implement it
+
+separately in the same module you are
+
+going to implement even the lexical
+
+analyzer and the semantic analyzer also
+
+and even the intermediate code generator
+
+therefore this entire part will be
+
+implemented together which is also
+
+called as front-end so till the phase in
+
+term it ice intermediate code generator
+
+it is also called as front end
+
+front end in the sense of the starting
+
+part of the compiler and after that
+
+whatever is remaining that is called
+
+back end okay so back end we have code
+
+optimizer and target code generator so
+
+in all these phases there is front-end
+
+and there is back-end theoretically the
+
+entire front end is implemented together
+
+and then the back end if you give any
+
+program normally so front-end will act
+
+on it first and then they back end if
+
+you are interested in implementing a
+
+compiler there are various tools
+
+available so first thing is for lexical
+
+analyzer there is a tool called Lex
+
+available in Unix so you can you can
+
+implement will let you know explain
+
+later using legs and for syntax analyzer
+
+there is a tool called by ACC at another
+
+compiler compiler and if you want to do
+
+any project on this compiler there is a
+
+tool called Lance Lanc Lance so Lance is
+
+nothing but implementation of the front
+
+end of the compiler which will give you
+
+intermediate code and then you can
+
+implement back end on your own depending
+
+on the platform okay so what I mean to
+
+say is theoretically there are all the
+
+phases but practically we have front end
+
+and back end all the phases not till
+
+this intermediate code generator are
+
+implemented together and mainly they are
+
+implemented in syntax analyzer okay okay
+

@@ -1,0 +1,10 @@
+written on the top of the program else become comments
+start with reference keyword and responsible mainly for file inclusion
+
+/// <reference path="CompilationProcess.md">
+The process of compilation in typescript begins from execting the set of root files in the tscnfig.json file.
+Triple-slsh directives are processed in a dfs manner
+
+errors in tsd= file referred doesnot exist
+
+--noResolve (tripleSlashDirectives are ignored)
